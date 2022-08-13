@@ -22,4 +22,21 @@ _Все описанные манипуляции производились н�
 - Произвдим установку системы и перезагружаем компьютер, попутно вынимая флешку. 
 - Из появившегося окна grub выбраем запуск Linux Fedora
 - Производим первичную настройку системы: подключение к Wi-Fi, отключение аналитики (по желанию), включение стронних репозиториев, ввод имени пользователя и пароля.
-> Чистая система весит порядка 5.5 -- 6 ГБ.
+> Чистая система после установки обновлений весит порядка 7 - 8 ГБ.
+
+> Для установки VSCode последовательно выполнить:
+> ``` bash
+> sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+> sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+> sudo dnf check-update
+> sudo dnf -y install code
+> ```
+
+> Для установки Opera последовательно выполнить:
+> ``` bash
+> sudo dnf config-manager --add-repo https://rpm.opera.com/rpm
+> sudo rpm --import https://rpm.opera.com/rpmrepo.key
+> sudo dnf upgrade --refresh
+> sudo dnf install opera-stable
+> ```
+
