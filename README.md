@@ -52,25 +52,25 @@ $ conda
 ```
 а затем соглашаемся с предложением установить недостающий пакет и создаем виртуальное окружение с помощью команды:
 ``` bash
-$ conda create --name casa python=3.8 pip spyder
+conda create --name casa python=3.8 pip spyder
 ```
 После этого запускаем 
 ``` bash
-$ conda init bash
+conda init bash
 ```
 и перезагружаем окно консоли. 
 Проверяем виртуальное окружение с помощью 
 ``` bash
-$ conda activate casa
+conda activate casa
 ```
 a также работу spyder с помощью
 ``` bash
-$ spyder
+spyder
 ```
 Консоль должна изменяться с ```(base)[username@fedora ~]$``` на ```(casa)[username@fedora ~]$``` при активации окружения.
 Для выхода из spyder используем ```ctrl + z```, для выхода из виртуального окружения используем 
 ``` bash 
-$ conda deactivate
+conda deactivate
 ```
 
 ## 4. Установка (сборка) casacore из исходников
@@ -83,7 +83,7 @@ git clone https://github.com/casacore/casacore
 ``` bash
 sudo yum install cmake cmake-gui gcc-gfortran gcc-c++ flex bison blas blas-devel  lapack lapack-devel cfitsio cfitsio-devel wcslib wcslib-devel ncurses ncurses-devel readline readline-devel python-devel boost boost-devel fftw fftw-devel hdf5 hdf5-devel numpy
 ```
-Затем во избежание получения ошибки ```FindGSL.cmake: gsl-config not found``` последовательно выполняем:
+Затем во избежание получения ошибки ```FindGSL.cmake: gsl-config not found``` последовательно выполняем команды ниже (полный текст инструкции, в случае необходимости, можно найти [тут](https://coral.ise.lehigh.edu/jild13/2016/07/11/hello/)):
 ``` bash
 wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
 tar -zxvf gsl-2.7.tar.gz
@@ -108,3 +108,49 @@ make
 sudo make install
 ```
 
+## 5. Установка дополнительных пакетов и библиотек
+``` bash
+sudo dnf install libnsl
+npm install nsl
+```
+
+_Выполняем, находясь в виртуальном окружении conda casa:_
+``` bash
+pip install astropy matplotlib sunpy casatasks numpy casatools sympy python-casacore ephem scipy scikit-image 
+python3 -m casatools --update-user-data
+```
+
+## 6. Обновление данных обсерваторий
+Заходим на сервер ```ftp://ftp.astron.nl/outgoing/Measures``` и скачиваем файл _WSRT_Measures.ztar_ в папку home. Затем распаковываем его.
+Создаем файл, который будет хранить путь к данным обсерваторий:
+``` bash
+nano .casarc
+```
+куда прописываем путь к данным, не забыв указать свой username: ```measures.observatory.directory: /home/username/WSRT_Measures/geodetic```
+Сохраняем сочетанием ```ctrl + O```
+
+## 7. Решение ошибок
+**1. libGL error:**
+``` bash
+libGL error: failed to load driver: nouveau libGL
+error: MESA-LOADER: failed to open swrast
+error: failed to load driver: swrast
+```
+_Решение_: ```conda install -c conda-forge libstdcxx-ng```
+
+**2. Черный экран при запуске скриптов**
+
+_Решение_: Spyder -> Tools -> Preferences -> IPython console -> Graphics -> Grapics backend -> Qt 5
+
+**3. Gnome error**
+``` bash
+Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. 
+Use QT_QPA_PLATFORM=wayland to run on Wayland anyway
+```
+_Решение_: 
+1. Расскоментировать строку ```WaylandEnable=false``` в файле ```/etc/gdm3/custom.conf```
+2. Добавить ```Add QT_QPA_PLATFORM=xcb``` в ```/etc/environment```
+
+**4. Любая другая ошибка**
+
+_Решение_: создаете issues если не знаете как решить, или pull requests если знаете решение :)
