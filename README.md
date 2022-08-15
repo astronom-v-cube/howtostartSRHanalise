@@ -90,8 +90,8 @@ sudo yum install cmake cmake-gui gcc-gfortran gcc-c++ flex bison blas blas-devel
 wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.7.tar.gz
 tar -zxvf gsl-2.7.tar.gz
 cd gsl-2.7
-mkdir /home/username/gsl
-./configure --prefix=/home/username/gsl
+mkdir /home/$USER/gsl
+./configure --prefix=/home/$USER/gsl
 make
 make check
 make install
