@@ -130,6 +130,7 @@ nano .casarc
 ```
 куда прописываем путь к данным, не забыв указать свой username: ```measures.observatory.directory: /home/username/WSRT_Measures/geodetic```
 Сохраняем сочетанием ```ctrl + O```
+Создаем переменную среды ```export CASARCFILES=“path/to/.casarc”```, затем перезапускаем консоль
 
 ## 7. Решение ошибок
 **1. libGL error:**
