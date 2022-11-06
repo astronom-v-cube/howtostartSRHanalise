@@ -138,7 +138,7 @@ nano .casarc
 ```
 куда прописываем путь к данным: ```measures.observatory.directory: /home/$USER/WSRT_Measures/geodetic```
 Сохраняем сочетанием ```ctrl + O```
-Создаем переменную среды, указывая свой путь до файла: ```export CASARCFILES = “path/to/.casarc”```, затем перезапускаем консоль
+Создаем переменную среды, указывая свой путь до файла: ```export CASARCFILES=“path/to/.casarc”```, затем перезапускаем консоль
 
 _Выполняем, находясь в виртуальном окружении conda casa:_
 ``` bash
