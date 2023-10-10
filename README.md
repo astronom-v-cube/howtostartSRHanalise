@@ -44,8 +44,14 @@ _Все описанные манипуляции производились н�
 > sudo dnf install opera-stable
 > ```
 
+## 3. Easy install / Легкая установка
 
-## 3. Установка нужной версии Python
+Скопируйте команду, которая объединяет все дальнейшие шаги, в консоль, запаситесь терпением и ждите скачивания и установки необходимых компонентов
+``` bash
+sudo dnf install conda -y && wget https://raw.githubusercontent.com/astronom-v-cube/howtostartSRHanalise/main/puppies.yml && sudo dnf install libnsl && sudo conda env create -f puppies.yml && conda activate casa && python3 -m casatools --update-user-data && rm puppies.yml && wget ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures.ztar --show-progress && mkdir WSRT_Measures/ && tar -xzvf WSRT_Measures.ztar -C WSRT_Measures/ && echo measures.observatory.directory: /home/$USER/WSRT_Measures/geodetic > .casarc && export CASARCFILES=“home/$USER/.casarc” && rm WSRT_Measures.ztar
+```
+
+## 4. Установка нужной версии Python
 
 К сожалению, CASA не поддерживает версии Python выше 3.8, наиболее удобный вариант - запускать все необходимое в виртуальном окружении conda. (Подробнее о возможностях conda хорошо написано [тут](https://python.ivan-shamaev.ru/guide-conda-environments-anaconda-python-data-science-platform/#Conda))
 
@@ -89,7 +95,7 @@ spyder
 conda deactivate
 ```
 
-## 4. Установка (сборка) casacore из исходников
+## 5. Установка (сборка) casacore из исходников
 
 Скачиваем исходный код проекта:
 ``` bash
@@ -124,13 +130,13 @@ make
 sudo make install
 ```
 
-## 5. Установка дополнительных пакетов и библиотек
+## 6. Установка дополнительных пакетов и библиотек
 ``` bash
 sudo dnf install libnsl
 npm install nsl
 ```
 
-## 6. Обновление данных обсерваторий
+## 7. Обновление данных обсерваторий
 Заходим на сервер ```ftp://ftp.astron.nl/outgoing/Measures``` и скачиваем файл _WSRT_Measures.ztar_ в папку home. Затем распаковываем его.
 Создаем файл, который будет хранить путь к данным обсерваторий:
 ``` bash
@@ -145,7 +151,7 @@ _Выполняем, находясь в виртуальном окружени
 python3 -m casatools --update-user-data
 ```
 
-## 7. Решение известных ошибок
+## 8. Решение известных ошибок
 **1. libGL error:**
 ``` bash
 libGL error: failed to load driver: nouveau libGL
