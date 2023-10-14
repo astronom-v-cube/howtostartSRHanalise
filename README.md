@@ -58,7 +58,21 @@ _Все описанные манипуляции производились н�
 Скопируйте команду, которая объединяет все дальнейшие шаги, в консоль, запаситесь терпением и ждите скачивания и установки необходимых компонентов
 
 ``` bash
-sudo dnf install conda -y && wget https://raw.githubusercontent.com/astronom-v-cube/howtostartSRHanalise/main/puppies.yml && sudo dnf install libnsl && sudo conda env create -f puppies.yml && conda activate casa && python3 -m casatools --update-user-data && rm puppies.yml && wget ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures.ztar --show-progress && mkdir WSRT_Measures/ && tar -xzvf WSRT_Measures.ztar -C WSRT_Measures/ && echo measures.observatory.directory: /home/$USER/WSRT_Measures/geodetic > .casarc && export CASARCFILES=“home/$USER/.casarc” && rm WSRT_Measures.ztar
+sudo dnf install conda -y 
+&& wget https://raw.githubusercontent.com/astronom-v-cube/howtostartSRHanalise/main/puppies.yml 
+&& sudo dnf install libnsl 
+&& sudo conda env create -f puppies.yml 
+&& conda activate casa 
+&& python3 -m casatools --update-user-data 
+&& rm puppies.yml 
+&& wget ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures.ztar --show-progress 
+&& mkdir WSRT_Measures/ 
+&& tar -xzvf WSRT_Measures.ztar -C WSRT_Measures/ 
+&& echo measures.observatory.directory: /home/$USER/WSRT_Measures/geodetic > .casarc 
+&& export CASARCFILES=“home/$USER/.casarc” 
+&& rm WSRT_Measures.ztar 
+&& sudo dnf install gcc gcc-c++ 
+&& pip install git+https://github.com/maria-globa/srhdata.git
 ```
 
 ## 4. Установка нужной версии Python
