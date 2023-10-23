@@ -220,6 +220,18 @@ error: failed to load driver: swrast
 
 _Решение_: ```conda install -c conda-forge libstdcxx-ng```
 
+Если указанное выше не помогло, следует найти расположение данной библиотеки в системе с помощью
+
+``` bash
+find / -name libstdc++.so.6 2>/dev/null
+```
+
+Затем любой из вариантов расположения (например, в ```/usr/lib64/```) добавить в файл ```.bashrs``` или соответсвующий файл другого интерпретатора терминала в папке ```home``` в следующем виде:
+
+``` bash
+export LD_PRELOAD=/usr/lib64/...path_to_file...
+```
+
 **2. Черный экран при запуске скриптов**
 
 _Решение_: Spyder -> Tools -> Preferences -> IPython console -> Graphics -> Grapics backend -> Qt 5
@@ -242,6 +254,8 @@ _Решение_:
 ``` bash
 tracker3 reset --filesystem
 ```
+
+Рекомендуется прописать в начале скрипта отключение данной службы, а в конце - включение
 
 **5. Любая другая ошибка**
 
