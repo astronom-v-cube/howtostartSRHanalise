@@ -70,6 +70,10 @@ sudo dnf install conda -y && wget https://raw.githubusercontent.com/astronom-v-c
 Можно использовать готовый конфигурационный файл ```conda_env_py310.yaml``` (находится в этом репозитории) следующим образом:
 
 ``` bash
+wget https://raw.githubusercontent.com/astronom-v-cube/howtostartSRHanalise/main/conda_env_py310.yaml
+```
+затем
+``` bash
 conda env create -f conda_env_py310.yaml
 ```
 
