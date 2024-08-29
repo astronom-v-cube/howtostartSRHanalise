@@ -90,7 +90,7 @@ sudo dnf install conda
 и создаем виртуальное окружение с помощью команды:
 
 ``` bash
-conda create --name srh python=3.10 pip spyder
+conda create --name srh python=3.10 pip spyder && pip install python-casacore
 ```
 
 После этого указываем
